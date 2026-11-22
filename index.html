@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ESBudget v4.2.0 — مديرك المالي الشخصي الذكي</title>
+  <meta name="description" content="حمّل أحدث إصدار رسمي من تطبيق ESBudget (v4.2.0) لإدارة الحسابات والمحافظ والديون وتعدد العملات على أندرويد بدون إنترنت 100%." />
+  <meta name="theme-color" content="#0B0F19" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0B0F19;
+      --surface: #131A2A;
+      --surface-border: rgba(255, 255, 255, 0.08);
+      --crimson: #B91C3C;
+      --crimson-glow: rgba(185, 28, 60, 0.45);
+      --emerald: #10B981;
+      --text: #F8FAFC;
+      --muted: #94A3B8;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: radial-gradient(circle at 50% 0%, rgba(185, 28, 60, 0.22), transparent 55%), var(--bg);
+      color: var(--text);
+      font-family: 'Cairo', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .hero {
+      background: linear-gradient(145deg, rgba(19, 26, 42, 0.96), rgba(11, 15, 25, 0.96));
+      border: 1px solid var(--surface-border);
+      border-radius: 28px;
+      padding: 40px 24px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      margin-bottom: 28px;
+    }
+    .logo-box {
+      width: 76px;
+      height: 76px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #D9264B, var(--crimson));
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      box-shadow: 0 12px 30px var(--crimson-glow);
+      margin-bottom: 16px;
+    }
+    .badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .pill {
+      background: rgba(185, 28, 60, 0.18);
+      border: 1px solid rgba(185, 28, 60, 0.45);
+      color: #FDA4AF;
+      font-weight: 800;
+      font-size: 0.88rem;
+      padding: 5px 16px;
+      border-radius: 999px;
+    }
+    .pill-emerald {
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #6EE7B7;
+    }
+    h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      margin-bottom: 8px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.08rem;
+      max-width: 680px;
+      margin: 0 auto 26px;
+    }
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #E11D48, var(--crimson));
+      color: #FFFFFF;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.12rem;
+      padding: 16px 32px;
+      border-radius: 18px;
+      box-shadow: 0 14px 36px var(--crimson-glow);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 44px rgba(225, 29, 72, 0.6);
+    }
+    .install-hint {
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 22px;
+      padding: 26px 24px;
+      margin-bottom: 24px;
+    }
+    .card h2 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #FDA4AF;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .changelog-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .changelog-list li {
+      position: relative;
+      padding-right: 22px;
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+    .changelog-list li::before {
+      content: "•";
+      position: absolute;
+      right: 0;
+      color: #F43F5E;
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .feature-card {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: 20px;
+      padding: 22px;
+    }
+    .feature-card h3 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: #FFFFFF;
+    }
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    footer {
+      text-align: center;
+      border-top: 1px solid var(--surface-border);
+      padding-top: 24px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-top: 10px;
+    }
+    .footer-links a {
+      color: #FDA4AF;
+      text-decoration: none;
+      font-weight: 700;
+    }
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div class="logo-box">💰</div>
+      <div class="badges">
+        <span class="pill">الإصدار الأحدث v4.2.0</span>
+        <span class="pill pill-emerald">يعمل بدون إنترنت 100% • أندرويد 7.0+</span>
+      </div>
+      <h1>ESBudget</h1>
+      <p class="subtitle">مديرك المالي الشخصي الذكي — إدارة الحسابات والمحافظ والديون وتعدد العملات والميزانيات بدقة محاسبية عالية وخصوصية تامة.</p>
+      <a class="download-btn" href="https://github.com/elias0esmail/ESBudget-Releases/releases/latest/download/ESBudget-release.apk">
+        <span>⬇️ تحميل أحدث إصدار مباشر (ESBudget-release.apk)</span>
+      </a>
+      <p class="install-hint">عند التحديث من نسخة سابقة: ثبّت الملف فوق النسخة الحالية مباشرة دون حذف التطبيق لتبقى جميع بياناتك محفوظة.</p>
+    </section>
+
+    <section class="card">
+      <h2>🆕 ما الجديد في الإصدار v4.2.0</h2>
+      <ul class="changelog-list">
+        <li>إضافة ميزة الالتقاط التلقائي لإشعارات البنوك والمحافظ (اختيارية وتعمل محلياً 100% على جهازك) لاقتراح قيد جاهز بضغطة واحدة فور وصول إشعار خصم أو إيداع.</li>
+          <li>إطلاق صفحة التحميل الرسمية الأنيقة للتطبيق بتحديث تلقائي لرقم الإصدار وآخر المميزات ورابط التحميل المباشر.</li>
+      </ul>
+    </section>
+
+    <section class="grid">
+      <article class="feature-card">
+        <h3>🏦 إدارة الحسابات والمحافظ والديون</h3>
+        <p>أضف حساباتك النقدية والبنكية والمحافظ الإلكترونية وبطاقات الدفع المسبق والديون (لنا / علينا) مع تجميع حسابات المحفظة متعددة العملات وكشف حساب تفصيلي.</p>
+      </article>
+      <article class="feature-card">
+        <h3>💱 تعدد العملات وسعر الصرف التاريخي</h3>
+        <p>دعم كامل للريال اليمني والدولار والريال السعودي وغيرها مع تثبيت سعر الصرف التاريخي لكل قيد وحاسبة مصارفة وتحويل فورية.</p>
+      </article>
+      <article class="feature-card">
+        <h3>🎙️ الإدخال الصوتي وقراءة الفواتير والإشعارات</h3>
+        <p>تسجيل العمليات بالصوت أو الجمل الطبيعية، مسح الإيصالات بالكاميرا (OCR)، والتقاط إشعارات البنوك والمحافظ محلياً بضغطة واحدة.</p>
+      </article>
+      <article class="feature-card">
+        <h3>📊 التقارير البصرية وتصدير PDF وExcel</h3>
+        <p>رسوم بيانية تفاعلية لصافي الثروة والتدفقات النقدية ومقارنة الأداء السنوي، مع تصدير ملفات Excel (.xlsx) متعددة الأوراق وكشوفات PDF احترافية.</p>
+      </article>
+      <article class="feature-card">
+        <h3>🔒 الإقفالات الشهرية والسنوية</h3>
+        <p>قفل وتجميد الفترات المحاسبية لمنع أي تعديل غير مقصود على الأشهر السابقة مع ترحيل تلقائي لأرصدة السنة المالية الجديدة.</p>
+      </article>
+      <article class="feature-card">
+        <h3>🛡️ الخصوصية والمزامنة السحابية الآمنة</h3>
+        <p>قفل بالبصمة ورمز PIN، تشفير النسخ الاحتياطي عبر Android Keystore، ومزامنة سحابية مشفرة عبر حساب Google أو البريد الإلكتروني.</p>
+      </article>
+    </section>
+
+    <footer>
+      <div>تطوير وتصميم: <strong>Elias Esmail</strong></div>
+      <div class="footer-links">
+        <a href="https://wa.me/967771902342" target="_blank" rel="noopener">💬 تواصل عبر واتساب (+967771902342)</a>
+        <a href="https://github.com/elias0esmail" target="_blank" rel="noopener">💻 حساب GitHub</a>
+        <a href="https://github.com/elias0esmail/ESBudget-Releases/releases" target="_blank" rel="noopener">📦 أرشيف جميع الإصدارات</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
